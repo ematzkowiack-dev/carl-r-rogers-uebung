@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="de"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Carl R. Rogers – Lückentext</title>
+<style>
+body{font-family:Arial;background:#f4f6f8;margin:0;padding:25px;color:#202832}
+main{max-width:900px;margin:auto;background:#fff;padding:30px;border-radius:18px;box-shadow:0 4px 18px #0002}
+h1{text-align:center;color:#375f82}.hint{text-align:center;color:#667}
+.text{font-size:19px;line-height:2.3}.drop{display:inline-flex;min-width:145px;height:32px;background:#eef3f6;border-bottom:2px solid #375f82;border-radius:5px;vertical-align:middle;align-items:center;justify-content:center;padding:0 6px}
+.bank{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;background:#eef2f5;padding:18px;border-radius:12px;margin:25px 0}
+.word{background:#375f82;color:#fff;padding:9px 13px;border-radius:7px;cursor:grab;font-weight:bold}.used{opacity:.45}
+.correct{background:#dff3e5!important;border-color:#3b8b55!important}.wrong{background:#fbe1e1!important;border-color:#b44!important}
+button{padding:11px 18px;border:0;border-radius:7px;margin:4px;font-size:15px;cursor:pointer}#check{background:#375f82;color:#fff}.reset{background:#e1e5e8}
+#result{text-align:center;font-weight:bold;margin-top:12px}
+</style>
+<main>
+<h1>🧠 Carl R. Rogers – Lückentext</h1>
+<p class="hint">Ziehe die Wörter aus der Wortbank in die passenden Lücken.</p>
+<div class="text">
+Carl R. Rogers entwickelte die <span class="drop" data-a="klientenzentrierte"></span> Gesprächsführung.
+Dabei steht die <span class="drop" data-a="Person"></span> und ihre subjektive Sicht im Mittelpunkt.
+Ziel ist eine hilfreiche und wertschätzende Gesprächsatmosphäre, in der sich die andere Person
+<span class="drop" data-a="verstanden"></span> und angenommen fühlt.<br><br>
+Für ein hilfreiches Gespräch sind drei Grundhaltungen besonders wichtig:
+<span class="drop" data-a="Empathie"></span>, <span class="drop" data-a="Akzeptanz"></span> und
+<span class="drop" data-a="Echtheit"></span>.<br><br>
+<span class="drop" data-a="Empathie"></span> bedeutet, die Gefühle und Gedanken des anderen zu verstehen
+und seine Perspektive nachzuvollziehen.
+<span class="drop" data-a="Akzeptanz"></span> bedeutet, den anderen als Person anzunehmen,
+ohne ihn abzuwerten oder zu verurteilen.
+<span class="drop" data-a="Echtheit"></span> bedeutet, im Gespräch authentisch und ehrlich zu sein
+und keine Rolle vorzuspielen.
+</div>
+<div class="bank" id="bank"></div>
+<div style="text-align:center"><button id="check">Lösung prüfen</button><button class="reset" onclick="location.reload()">Zurücksetzen</button></div>
+<div id="result"></div>
+<script>
+const bank=["Echtheit","Person","Akzeptanz","klientenzentrierte","Empathie","verstanden","Akzeptanz","Echtheit","Empathie"];
+const b=document.getElementById("bank"); let drag=null;
+bank.forEach((x,i)=>{let e=document.createElement("span");e.className="word";e.draggable=true;e.textContent=x;e.id="w"+i;e.ondragstart=()=>drag=e;b.appendChild(e)});
+document.querySelectorAll(".drop").forEach(d=>{d.ondragover=e=>e.preventDefault();d.ondrop=e=>{e.preventDefault();if(drag){if(d.firstElementChild){b.appendChild(d.firstElementChild);d.firstElementChild.classList.remove("used")}d.appendChild(drag);drag.classList.add("used")}}});
+document.getElementById("check").onclick=()=>{let n=0;document.querySelectorAll(".drop").forEach(d=>{d.classList.remove("correct","wrong");if(d.textContent.trim()===d.dataset.a){n++;d.classList.add("correct")}else d.classList.add("wrong")});document.getElementById("result").textContent=`${n} von 9 Lücken richtig!`};
+</script>
+</main></html>
